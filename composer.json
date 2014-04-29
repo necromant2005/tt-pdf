@@ -1,0 +1,25 @@
+{
+    "name": "necromant2005/tt-pdf",
+    "type": "library",
+    "description": "Pdf exporting library",
+    "keywords": ["pdf", "html", "export"],
+    "homepage": "https://github.com/necromant2005/tt-pdf",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rostislav Mykhajliw",
+            "email": "necromant2005@gmail.com",
+            "homepage": "https://github.com/necromant2005",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendpdf": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "TweePdf": "src/"
+        }
+    }
+}
