@@ -4,9 +4,10 @@ use PHPUnit_Framework_TestCase;
 
 class ReportTest extends PHPUnit_Framework_TestCase
 {
-    public function testExtremum()
+    public function test()
     {
         $service = new Report();
-        $service->toPdf(file_get_contents(__DIR__ . '/_files/report.html'));
+        $content = $service->toPdf(file_get_contents(__DIR__ . '/_files/report.html'));
+        $this->assertEquals('%PDF', substr($content, 0, 4));
     }
 }
