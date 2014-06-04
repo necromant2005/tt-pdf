@@ -12,9 +12,13 @@ casper.viewport(1024, 768);
 casper.thenOpen(input, function() {
 });
 
-casper.then(function() {
-  this.wait(2000);
-});
+casper.waitFor(function() {
+    return this.evaluate(function() {
+      return document;
+    });
+  },
+  function then() {}
+);
 
 casper.then(function() {
   this.capture(output);
