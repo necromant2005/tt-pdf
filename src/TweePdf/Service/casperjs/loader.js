@@ -13,6 +13,10 @@ casper.thenOpen(input, function() {
 });
 
 casper.then(function() {
+  this.wait(2000);
+});
+
+casper.then(function() {
   this.capture(output);
 });
 
