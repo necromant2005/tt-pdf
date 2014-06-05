@@ -22,7 +22,6 @@ class Html2Image
         $content = file_get_contents($imageFile);
         @unlink($tempnam);
         @unlink($htmlFile);
-        @unlink($pdfFile);
         return $content;
     }
 }
