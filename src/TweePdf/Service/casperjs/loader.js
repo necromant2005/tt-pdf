@@ -21,6 +21,10 @@ casper.waitFor(function() {
 );
 
 casper.then(function() {
+    this.wait(7000);
+});
+
+casper.then(function() {
   this.capture(output);
 });
 
