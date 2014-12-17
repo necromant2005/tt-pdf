@@ -14,6 +14,7 @@ class Html2Image
         file_put_contents($htmlFile, $html);
 
         $cmd = '/usr/local/bin/casperjs '
+            . escapeshellarg('--ssl-protocol=TLSv1') . ' '
             . escapeshellarg('--ignore-ssl-errors=yes') . ' '
             . escapeshellarg(__DIR__ . '/casperjs/loader.js') . ' '
             . '--input=' . escapeshellarg($htmlFile) . ' '
