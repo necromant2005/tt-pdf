@@ -1,7 +1,5 @@
 <?php
 namespace TweePdf\Service;
-use ZendPdf;
-use Imagick;
 
 class Html2Image
 {
@@ -21,6 +19,7 @@ class Html2Image
             . '--output=' . escapeshellarg($imageFile);
         @system($cmd);
         $content = file_get_contents($imageFile);
+
         @unlink($tempnam);
         @unlink($htmlFile);
         @unlink($imageFile);
