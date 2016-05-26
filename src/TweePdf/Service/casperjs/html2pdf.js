@@ -5,12 +5,12 @@ output = casper.cli.get('output');
 
 casper
     .start()
-    .viewport(1024, 768)
+    .viewport(768, 1024)
     .page.paperSize = {
       width: '8.5in',
       height: '11in',
       format: 'A4',
-      orientation: 'landscape',
+      orientation: 'portrait',
       border: '0.4in',
       margin: '0.4in'
     };
