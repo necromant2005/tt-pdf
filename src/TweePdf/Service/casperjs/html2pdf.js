@@ -10,7 +10,8 @@ casper
       width: '8.5in',
       height: '11in',
       orientation: 'portrait',
-      border: '0.4in'
+      border: '0.4in',
+      margin: '0.4in'
     };
 
 casper.on('remote.message', function(msg) {
