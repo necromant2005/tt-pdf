@@ -9,7 +9,8 @@ casper
     .page.paperSize = {
       width: '8.5in',
       height: '11in',
-      orientation: 'portrait',
+      format: 'A4',
+      orientation: 'landscape',
       border: '0.4in',
       margin: '0.4in'
     };
