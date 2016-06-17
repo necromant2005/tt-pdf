@@ -4,7 +4,7 @@ input = casper.cli.get('input');
 output = casper.cli.get('output');
 
 casper.start();
-casper.viewport(1024, 768);
+casper.viewport(1240, 1754);
 casper.page.paperSize = {
     width: '8.5in',
     height: '11in',
