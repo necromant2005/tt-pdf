@@ -14,12 +14,11 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "ext-imagick": "*"
+        "php": ">=7"
     },
     "autoload": {
-        "psr-0": {
-            "TweePdf": "src/"
+        "psr-4": {
+            "TweePdf\\": "src/TweePdf"
         }
     }
 }

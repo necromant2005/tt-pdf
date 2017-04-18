@@ -3,21 +3,8 @@ namespace TweePdf\Service;
 
 class Html2Pdf
 {
-    public function convert($html, $mode = '')
+    public function convert(string $html) : string
     {
-        switch ($mode) {
-            case 'img-pdf':
-                $blob = (new Html2Image)->convert($html);
-                return (new Image2Pdf())->convert($blob);
-                break;
-            case 'img-html-pdf':
-                $blob = (new Html2Image)->convert($html);
-                return (new Image2PdfPage())->convert($blob);
-                break;
-            default:
-                break;
-        }
-
         $tempnam = tempnam(sys_get_temp_dir(), 'converting-html-to-pdf-');
         file_put_contents($tempnam, 'abc');
         $htmlFile  = $tempnam . '.html';
@@ -31,12 +18,15 @@ class Html2Pdf
             . escapeshellarg(__DIR__ . '/casperjs/html2pdf.js') . ' '
             . '--input=' . escapeshellarg($htmlFile) . ' '
             . '--output=' . escapeshellarg($pdfFile);
+
+        // echo $cmd . PHP_EOL;
         @system($cmd);
         $content = file_get_contents($pdfFile);
 
         @unlink($tempnam);
         @unlink($htmlFile);
         @unlink($pdfFile);
+
         return $content;
     }
 }
