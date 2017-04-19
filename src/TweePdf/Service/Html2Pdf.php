@@ -5,7 +5,7 @@ class Html2Pdf
 {
     public function convert(string $html) : string
     {
-        $tmpname = tempnam(sys_get_temp_dir(), 'converting-html-to-pdf-');
+        $tmpname = tempnam('/tmp', 'converting-html-to-pdf-');
         $dirname = $tmpname . '-d';
         mkdir($dirname);
 
