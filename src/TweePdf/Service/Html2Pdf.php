@@ -5,8 +5,7 @@ class Html2Pdf
 {
     public function convert(string $html) : string
     {
-        $tmpname = tempnam('/tmp', 'converting-html-to-pdf-');
-        $dirname = $tmpname . '-d';
+        $dirname = '/tmp/' . uniqid() . uniqid() . uniqid() . uniqid();
         mkdir($dirname);
 
         // $dirname = __DIR__ .'/../../../tmp';
@@ -27,7 +26,6 @@ class Html2Pdf
         system($cmd);
         $content = file_get_contents($dirname . '/output.pdf');
 
-        @unlink($tempnam);
         @unlink($dirname . '/html2pdf.js');
         @unlink($dirname . '/input.html');
         @unlink($dirname . '/output.pdf');
