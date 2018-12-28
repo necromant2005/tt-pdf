@@ -14,7 +14,7 @@ class Html2Pdf
         copy(__DIR__ . '/casperjs/html2pdf.js', $dirname . '/html2pdf.js');
         file_put_contents($dirname . '/input.html', $html);
 
-        $cmd = 'docker run --rm -v ' . $dirname . ':/mnt necromant2005/tt-pdf '
+        $cmd = 'docker run --rm -v ' . $dirname . ':/mnt truesocialmetrics/pdf-rendering '
             . '/usr/local/bin/casperjs '
             . '--ssl-protocol=TLSv1 '
             . '--ignore-ssl-errors=yes '

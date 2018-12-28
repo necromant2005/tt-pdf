@@ -1,8 +1,8 @@
 <?php
 namespace TweePdf\Service;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class Html2PdfTest extends PHPUnit_Framework_TestCase
+class Html2PdfTest extends TestCase
 {
     public function testPdf()
     {

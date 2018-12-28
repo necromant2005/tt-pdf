@@ -1,9 +1,9 @@
 {
-    "name": "necromant2005/tt-pdf",
+    "name": "truesocialmetrics/pdf-rendering",
     "type": "library",
     "description": "Pdf exporting library",
     "keywords": ["pdf", "html", "export"],
-    "homepage": "https://github.com/necromant2005/tt-pdf",
+    "homepage": "https://github.com/truesocialmetrics/pdf-rendering",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=7"
+        "php": ">=7.1"
     },
     "autoload": {
         "psr-4": {
