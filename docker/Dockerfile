@@ -9,7 +9,7 @@ RUN apt-get install -y wget bzip2
 
 # phantomjs
 RUN apt-get install -y fontconfig
-RUN wget https://github.com/necromant2005/tt-package/raw/master/phantomjs-1.9.8-linux-x86_64.tar.bz2 -O /tmp/phantomjs.tar.bz2 \
+RUN wget https://github.com/truesocialmetrics/package-vendoring/raw/master/phantomjs-1.9.8-linux-x86_64.tar.bz2 -O /tmp/phantomjs.tar.bz2 \
     && cd /tmp && tar -xvf /tmp/phantomjs.tar.bz2 \
     && mv /tmp/phantomjs-1.9.8-linux-x86_64 /tmp/phantomjs \
     && mv /tmp/phantomjs /opt \
