@@ -1,9 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 MAINTAINER Rostislav Mykhajliw <necromant2005@gmail.com>
 
 # base
 RUN apt-get update
+RUn apt-get upgrade -y
 RUN apt-get install -y wget bzip2
 
 
