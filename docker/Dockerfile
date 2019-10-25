@@ -26,4 +26,7 @@ RUN wget https://github.com/casperjs/casperjs/archive/1.1.4.tar.gz -O /tmp/caspe
     && ln -s /opt/casperjs/bin/casperjs /usr/local/bin/casperjs \
     && rm -rf /tmp/casperjs.tar.gz
 
+COPY run.sh /mnt/run.sh
+RUN chmod +x /mnt/run.sh
+
 CMD ["/bin/bash"]
