@@ -7,7 +7,7 @@ class Html2Pdf
 
     public function convert(string $html) : string
     {
-        $cmd = 'docker run --rm truesocialmetrics/pdf-rendering /mnt/run.sh '
+        $cmd = 'docker run --rm pdf-docker /mnt/run.sh '
             . base64_encode(file_get_contents(__DIR__ . '/casperjs/html2pdf.js')) . ' '
             . base64_encode($html);
 
