@@ -5,6 +5,10 @@ class Html2Pdf
 {
     public function convert(string $html, string $realpath = '') : string
     {
+        if (empty($realpath)) {
+            $realpath = getcwd();
+        }
+
         $dirname = 'tmp/' . hrtime(true) . '_' . uniqid();
         //$dirname = 'tmp/html2pdf';
         mkdir($dirname);
