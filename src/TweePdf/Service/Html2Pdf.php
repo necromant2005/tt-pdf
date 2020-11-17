@@ -3,30 +3,23 @@ namespace TweePdf\Service;
 
 class Html2Pdf
 {
-    public function convert(string $html) : string
+    public function convert(string $html, string $realpath = '') : string
     {
-        $dirname = '/tmp/' . uniqid() . uniqid() . uniqid() . uniqid();
+        $dirname = 'tmp/' . hrtime(true) . '_' . uniqid();
+        //$dirname = 'tmp/html2pdf';
         mkdir($dirname);
 
-        // $dirname = __DIR__ .'/../../../tmp';
-        // @mkdir($dirname);
-
-        copy(__DIR__ . '/casperjs/html2pdf.js', $dirname . '/html2pdf.js');
         file_put_contents($dirname . '/input.html', $html);
 
-        $cmd = 'docker run --rm -v ' . $dirname . ':/mnt truesocialmetrics/pdf-rendering '
-            . '/usr/local/bin/casperjs '
-            . '--ssl-protocol=TLSv1 '
-            . '--ignore-ssl-errors=yes '
-            . '/mnt/html2pdf.js '
-            . '--input=/mnt/input.html '
-            . '--output=/mnt/output.pdf ';
+        $cmd = 'docker run --rm -v ' . $realpath . '/' . $dirname . ':/mnt truesocialmetrics/pdf-rendering '
+            . 'node /html2pdf.js '
+            . '/mnt/input.html '
+            . '/mnt/output.pdf ';
 
         // echo $cmd . PHP_EOL;
         system($cmd);
         $content = file_get_contents($dirname . '/output.pdf');
 
-        @unlink($dirname . '/html2pdf.js');
         @unlink($dirname . '/input.html');
         @unlink($dirname . '/output.pdf');
         rmdir($dirname);

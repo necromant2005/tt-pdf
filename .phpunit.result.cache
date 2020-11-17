@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":259:{a:2:{s:7:"defects";a:2:{s:37:"TweePdf\Service\Html2PdfTest::testPdf";i:4;s:42:"TweePdf\Service\Html2PdfTest::testPdfLarge";i:4;}s:5:"times";a:2:{s:37:"TweePdf\Service\Html2PdfTest::testPdf";d:6.303;s:42:"TweePdf\Service\Html2PdfTest::testPdfLarge";d:17.498;}}}
