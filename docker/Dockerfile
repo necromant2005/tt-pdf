@@ -1,44 +1,32 @@
-FROM debian:buster-slim
-MAINTAINER Rostislav Mykhajliw <necromant2005@gmail.com>
+FROM alpine:edge
 
-LABEL name="truesocialmetrics/headless-chrome " \
-            description="Headlesschrome based on Justin Ribeiro <justin@justinribeiro.com> Google Chrome Headless in a container"
+# Installs latest Chromium (85) package.
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      freetype-dev \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont \
+      nodejs \
+      yarn
 
-# Install deps + add Chrome Stable + purge all the things
-RUN apt-get update && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    --no-install-recommends \
-    && curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update && apt-get install -y \
-    google-chrome-stable \
-    fontconfig \
-    fonts-ipafont-gothic \
-    fonts-wqy-zenhei \
-    fonts-thai-tlwg \
-    fonts-kacst \
-    fonts-symbola \
-    fonts-noto \
-    fonts-freefont-ttf \
-    --no-install-recommends \
-    && apt-get purge --auto-remove -y curl gnupg \
-    && rm -rf /var/lib/apt/lists/*
+# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-# Install yarn + node deps
-RUN apt-get update \
-    && apt-get install -y build-essential \
-    && apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y nodejs \
-    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update && apt-get install yarn \
-    && rm -rf /var/lib/apt/lists/*
+# Puppeteer v5.2.1 works with Chromium 85.
+RUN yarn add puppeteer@5.2.1
 
-RUN npm i --save puppeteer
+# Add user so we don't need --no-sandbox.
+#RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
+#    && mkdir -p /home/pptruser/Downloads /app \
+#    && chown -R pptruser:pptruser /home/pptruser \
+#    && chown -R pptruser:pptruser /app
+
+# Run everything after as non-privileged user.
+#USER pptruser
 
 COPY html2pdf.js /html2pdf.js
 
